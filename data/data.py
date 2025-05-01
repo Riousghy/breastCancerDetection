@@ -10,12 +10,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-# 创建 "data analysis" 目录 / Create "data analysis" directory if not exists
+# 创建 "data analysis" 目录 / Create "data analysis" directory if not exist
 results_dir = "data_nalysis"
 if not os.path.exists(results_dir):
     os.makedirs(results_dir)
 
-# 读取数据 / Load dataset
+# 读取数据 / Load
 data_file_path = "data/breast+cancer+wisconsin+diagnostic/wdbc.data"
 column_names = [
     "ID", "Diagnosis", "radius_mean", "texture_mean", "perimeter_mean", "area_mean", "smoothness_mean",
@@ -28,10 +28,10 @@ column_names = [
 
 df = pd.read_csv(data_file_path, header=None, names=column_names)
 
-# 删除无用的 ID 列 / Drop the unused ID column
+# 删除无用的 ID 列 / Drop ID 
 df.drop(columns=["ID"], inplace=True)
 
-# 将目标变量 Diagnosis 转换为数值 (M=1, B=0) / Convert target variable (M=1, B=0)
+# 将目标变量 Diagnosis 转换为数值 (M=1, B=0) / Convert target variable (M=1, B=0)（label encoding）
 df["Diagnosis"] = df["Diagnosis"].map({"M": 1, "B": 0})
 
 # 归一化数据 / Normalize data using StandardScaler
